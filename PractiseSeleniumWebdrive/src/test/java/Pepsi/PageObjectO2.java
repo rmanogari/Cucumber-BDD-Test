@@ -247,8 +247,36 @@ public class PageObjectO2{
 	String ECEmployeeExpandicon_xpath="//span[@id='__select0-icon']";
 	
 	String ECJobInfoheader_xpath ="//bdi[text()='Job Information']//parent::span[@class='sapMBtnContent']";
-	String ECPortelslistbx_xpath="//ul[@id='__list0']/li";
-	String ECPortelCompInfo_xpath="//ul[@id='__list0']/li[text()='Compensation Information']";
+	String ECPortletslistbx_xpath="//ul[@id='__list0']/li";
+	String ECPortletCompInfo_xpath="//ul[@id='__list0']/li[text()='Compensation Information']";
+	
+	String ECCompInfoHistorybtn_xpath ="//button[@title='Compensation Information History']";
+	
+	
+	
+	//History 
+	
+	String ECRecordEventDateList_xpath ="//div[@class='sapMLIBContent']/div/div/div/span";
+	String ECReocrdEventDate_xpath = "//div[@class='sapMLIBContent']/div/div/div/span[1]";
+	
+	String ECEventReasonlbl_xpath ="//span[text()='Event Reason']";
+	String ECPayCompValue_xpath ="(//span[text()='Base Salary (PC-GBL0001)']//parent::td/following-sibling::td[2]/span)[1]";
+	
+	//(//span[text()='Base Salary (PC-GBL0001)']/ancestor::tbody[@class='sapMListItems sapMTableTBody'])[1]
+	
+	//span[text()='Base Salary (PC-GBL0001)']
+	
+	
+	
+	
+	
+	//div[@id='splitContainer-Master']//parent::div[@id='splitContainer']
+	//div[@id='splitContainer-Detail']//parent::div[@id='splitContainer']
+	
+	
+	//div[@id='splitContainer']/div
+	
+	//div[@class='sapMLIBContent']/div/div/div/span
 	
 	
 	//**************************************************EC Objects*************************************************************

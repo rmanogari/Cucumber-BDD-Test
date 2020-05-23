@@ -1,6 +1,7 @@
 package Pepsi;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,7 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import junit.framework.Assert;
 
 
 public class EC_CompensationInfo {
@@ -20,7 +24,7 @@ public class EC_CompensationInfo {
 		public static String ECUserName ="09107706";
 		public static String ECPwd = "Flash$12";
 		public static String EmployeeId ="71021619";
-		public static String ECPortel="Compensation Information";
+		public static String ECPortlet="Compensation Information";
 
 		public static void main(String[] args) {
 			try {
@@ -30,6 +34,8 @@ public class EC_CompensationInfo {
 				
 				WebDriver driver = new ChromeDriver();
 				WebDriverWait wait = new WebDriverWait(driver, 10);
+				driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+				Actions action = new Actions(driver);
 				
 				//Logging the EC Application
 				driver.manage().window().maximize();
@@ -40,14 +46,17 @@ public class EC_CompensationInfo {
 				//Thread.sleep(1000); // need to increase the sleep time during execution
 				driver.findElement(By.name(pgObj.ECUserNametxt_name)).sendKeys(ECUserName);
 				driver.findElement(By.name(pgObj.ECPasswrdtxt_name)).sendKeys(ECPwd);
-				driver.findElement(By.xpath(pgObj.ECLoginbtn_xpath)).click();
-				//Thread.sleep(2000);
+				Thread.sleep(1000);
+				WebElement loginbtn = driver.findElement(By.xpath(pgObj.ECLoginbtn_xpath));
+				action.moveToElement(loginbtn).click().build().perform();	
+				
+				//driver.findElement(By.xpath(pgObj.ECLoginbtn_xpath)).click();
 				driver.findElement(By.xpath(pgObj.ECSearchtxtbx_xpath)).sendKeys(EmployeeId);
-				//Thread.sleep(1000);
+				Thread.sleep(1000);
 				driver.findElement(By.xpath(pgObj.ECSearchtxtbx_xpath)).sendKeys(Keys.ARROW_DOWN);
 				driver.findElement(By.xpath(pgObj.ECSearchtxtbx_xpath)).sendKeys(Keys.ENTER);
-				//Thread.sleep(1000);
-				
+
+					
 				driver.findElement(By.xpath(pgObj.ECJobInfoheader_xpath)).click();
 				
 				
@@ -56,25 +65,63 @@ public class EC_CompensationInfo {
 				
 				JavascriptExecutor js = (JavascriptExecutor)driver;   
 				js.executeScript("arguments[0].setAttribute('style','background: yellow; border: 2px solid red;');", element);
-				Actions action = new Actions(driver);
+				
 				action.moveToElement(element).click().build().perform();
 				
 				
-				WebElement ECPortelsoptions = driver.findElement(By.xpath(pgObj.ECPortelslistbx_xpath));
-				List<WebElement> ECPortelSelect = ECPortelsoptions.findElements(By.xpath(pgObj.ECPortelCompInfo_xpath));
-				for (WebElement ECPortelRO : ECPortelSelect)
+				WebElement ECPortletsoptions = driver.findElement(By.xpath(pgObj.ECPortletslistbx_xpath));
+				List<WebElement> ECPortletSelect = ECPortletsoptions.findElements(By.xpath(pgObj.ECPortletCompInfo_xpath));
+				for (WebElement ECPortletRO : ECPortletSelect)
 				{
-				    if (ECPortelRO.getText().equals(ECPortel))
+				    if (ECPortletRO.getText().equals(ECPortlet))
 				    {
-				    	ECPortelRO.click(); 
-				    	//Thread.sleep(1000);
+				    	ECPortletRO.click(); 
 				        break;
 				    }
 				}
 
+				Thread.sleep(1000);
+				driver.findElement(By.xpath(pgObj.ECCompInfoHistorybtn_xpath)).click();
+				
+				
+				String StartDateTemp = "Mar 07, 2020"; // need to modify by getting from MLT TransDetail page
+				String PayCompValFile = "122,100.00";  // need to modify by getting from MLT TransDetail page
+				
+				
+				List<WebElement> ECRecordCount = driver.findElements(By.xpath(pgObj.ECRecordEventDateList_xpath));
+				for(WebElement ECRecordToprow :ECRecordCount)
+				{
+					if(ECRecordToprow.getText().equals(StartDateTemp))
+					{
+						driver.findElement(By.xpath(pgObj.ECReocrdEventDate_xpath)).click();
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(pgObj.ECEventReasonlbl_xpath)));
+						String ECPaycompValue = driver.findElement(By.xpath(pgObj.ECPayCompValue_xpath)).getText();
+						if(PayCompValFile.contains(ECPaycompValue))
+						{
+							Assert.assertTrue("Base Salary updated", true);
+						}
+						break;
+					}
+					
+					
+				}
 				
 				
 				
+				/*String ECEventDate = driver.findElement(By.xpath(pgObj.ECReocrdEventDate_xpath)).getText();
+				
+				if(StartDateTemp.contains(ECEventDate)) 
+				{
+					
+					driver.findElement(By.xpath(pgObj.ECReocrdEventDate_xpath)).click();
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(pgObj.ECEventReasonlbl_xpath)));
+					String ECPaycompValue = driver.findElement(By.xpath(pgObj.ECPayCompValue_xpath)).getText();
+					if(PayCompValFile.contains(ECPaycompValue))
+					{
+						Assert.assertTrue("Base Salary updated", true);
+					}
+					
+				}*/
 				
 				
 			}
