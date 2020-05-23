@@ -262,11 +262,6 @@ public class PageObjectO2{
 	String ECEventReasonlbl_xpath ="//span[text()='Event Reason']";
 	String ECPayCompValue_xpath ="(//span[text()='Base Salary (PC-GBL0001)']//parent::td/following-sibling::td[2]/span)[1]";
 	
-	//(//span[text()='Base Salary (PC-GBL0001)']/ancestor::tbody[@class='sapMListItems sapMTableTBody'])[1]
-	
-	//span[text()='Base Salary (PC-GBL0001)']
-	
-	
 	
 	
 	
@@ -274,9 +269,6 @@ public class PageObjectO2{
 	//div[@id='splitContainer-Detail']//parent::div[@id='splitContainer']
 	
 	
-	//div[@id='splitContainer']/div
-	
-	//div[@class='sapMLIBContent']/div/div/div/span
 	
 	
 	//**************************************************EC Objects*************************************************************

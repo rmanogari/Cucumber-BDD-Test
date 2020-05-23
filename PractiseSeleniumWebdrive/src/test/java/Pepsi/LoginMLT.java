@@ -3,31 +3,34 @@ package Pepsi;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import ReusableFunctions.PageObjectO2;
-import ReusableFunctions.TakingScreenshotMethod1Krishna;
+import Reusablelibrary.PageObjectO2;
+import Reusablelibrary.ReusableFunctions;
+import config.ReadPropFile;
 
-public class LoginMLT extends TakingScreenshotMethod1Krishna {
+public class LoginMLT {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		PageObjectO2 pgObj = new PageObjectO2();
-		TakingScreenshotMethod1Krishna ss = new TakingScreenshotMethod1Krishna();
-
+		ReusableFunctions reusefunObj = new ReusableFunctions();
+		ReadPropFile dataObj = new ReadPropFile();
+		
 		try {
-
 			
 			System.setProperty("webdriver.chrome.driver", "C:\\20056283\\Selenium\\ChromeDriver\\chromedriver.exe");
-
 			WebDriver driver = new ChromeDriver();
 
 			//Logging the application
-			
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
-			String url = "https://www.google.com";
-			driver.get(url);
-			Thread.sleep(2000);
-			//ss.getScreenShotPath();
+			
+			driver.get(dataObj.getpractiseUrl());
+			//Thread.sleep(1000);
+			//WebElement element = driver.findElement(By.xpath("//input[@title='Search']"));
+			//reusefunObj.highlightElement(driver, element);
+			String ScreenshotName = "TestReusablefunctions";
+			reusefunObj.caputreScreenShot(driver, ScreenshotName);
+			
 			System.out.println("Screenshot Taken successfully");
 		}catch(Exception e){
 			String errormsg = e.getMessage();

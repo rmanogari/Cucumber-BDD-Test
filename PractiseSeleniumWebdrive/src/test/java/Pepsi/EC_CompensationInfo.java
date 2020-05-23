@@ -84,7 +84,7 @@ public class EC_CompensationInfo {
 				driver.findElement(By.xpath(pgObj.ECCompInfoHistorybtn_xpath)).click();
 				
 				
-				String StartDateTemp = "Mar 07, 2020"; // need to modify by getting from MLT TransDetail page
+				String StartDateTemp = "Mar 07, 2020"; // need to modify by getting from MLT TransDetail page & to find the method to convert the 03/07/2020 into Mar 07, 2020
 				String PayCompValFile = "122,100.00";  // need to modify by getting from MLT TransDetail page
 				
 				
