@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="28628" started-at="2020-05-24T15:08:27Z" finished-at="2020-05-24T15:08:55Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="28628" started-at="2020-05-24T15:08:27Z" finished-at="2020-05-24T15:08:55Z">
+      <class name="Reusablelibrary.ExtentReportsWithTestNG">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="setUp" is-config="true" duration-ms="179" started-at="2020-05-24T15:08:27Z" finished-at="2020-05-24T15:08:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="setUpTest()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="setUpTest" is-config="true" duration-ms="5106" started-at="2020-05-24T15:08:27Z" finished-at="2020-05-24T15:08:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTest -->
+        <test-method status="PASS" signature="test1()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="test1" duration-ms="9477" started-at="2020-05-24T15:08:32Z" finished-at="2020-05-24T15:08:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test2()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="test2" duration-ms="10491" started-at="2020-05-24T15:08:41Z" finished-at="2020-05-24T15:08:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="tearDownTest()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="tearDownTest" is-config="true" duration-ms="3530" started-at="2020-05-24T15:08:52Z" finished-at="2020-05-24T15:08:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Reusablelibrary.ExtentReportsWithTestNG@52f759d7]" name="tearDown" is-config="true" duration-ms="377" started-at="2020-05-24T15:08:56Z" finished-at="2020-05-24T15:08:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Reusablelibrary.ExtentReportsWithTestNG -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

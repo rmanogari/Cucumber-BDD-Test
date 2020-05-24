@@ -12,7 +12,7 @@ public class LoginMLT {
 	public static void main(String[] args) throws Exception {
 		
 		PageObjectO2 pgObj = new PageObjectO2();
-		ReusableFunctions reusefunObj = new ReusableFunctions();
+		ReusableFunctions rfObj = new ReusableFunctions();
 		ReadPropFile dataObj = new ReadPropFile();
 		
 		try {
@@ -29,7 +29,7 @@ public class LoginMLT {
 			//WebElement element = driver.findElement(By.xpath("//input[@title='Search']"));
 			//reusefunObj.highlightElement(driver, element);
 			String ScreenshotName = "TestReusablefunctions";
-			reusefunObj.caputreScreenShot(driver, ScreenshotName);
+			rfObj.caputreScreenShot(driver, ScreenshotName);
 			
 			System.out.println("Screenshot Taken successfully");
 		}catch(Exception e){
