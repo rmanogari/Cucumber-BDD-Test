@@ -115,5 +115,32 @@ public class ReusableFunctions {
 		}
 
 	}
+	
+	/*Method Name : getScreenshot
+	 * Purpose : To capture the screenshot with one parameter
+	 * Author : A1015238
+	 * Created Date : 5/25/2020
+	 * Last Modified : 5/25/2020
+	 */
+	public  String getScreenshot(WebDriver driver)
+	{
+		TakesScreenshot ts=(TakesScreenshot) driver;
+		
+		File src=ts.getScreenshotAs(OutputType.FILE);
+		
+		String path=System.getProperty("user.dir")+"/Screenshot/"+System.currentTimeMillis()+".png";
+		
+		File destination=new File(path);
+		
+		try 
+		{
+			FileHandler.copy(src, destination);
+		} catch (IOException e) 
+		{
+			System.out.println("Capture Failed "+e.getMessage());
+		}
+		
+		return path;
+	}
 
 	}

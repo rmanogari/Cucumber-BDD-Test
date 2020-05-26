@@ -16,10 +16,12 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtentReportsWithTestNG {
+	
+	ReusableFunctions rfObj = new ReusableFunctions();
 
 	WebDriver driver;
 	
@@ -64,36 +66,44 @@ public class ExtentReportsWithTestNG {
 	@Test
 	public void test1() throws IOException
 	{
- 
-	    test = extent.createTest("Google Search Test One", "Extent Reports"); 
+		String path=System.getProperty("user.dir")+"/Screenshot/"+System.currentTimeMillis();
+	    test = extent.createTest("Extent Reports", "Creation"); 
 		driver.get("https://www.google.com/");
 		test.pass("Navigated to google.com");
 		driver.findElement(By.xpath("//input[@title='Search']")).sendKeys("extent Reports");
-		test.pass("Entered text in search box");
-		driver.findElement(By.xpath("(//input[@name='btnK'])[2]")).click();
-		test.pass("Clicked the search button");
-		//test.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
-		//test.fail("details", MediaEntityBuilder.createScreenCaptureFromPath("ExtReTestNG screenshot.png").build());
-		//test.addScreenCaptureFromPath("screenshot.png");
-
-		test.info("Test1 Completed");
-		test.log(Status.INFO, "This step shows usage of log(status and Info");
-		test.info("this shows the usage of info");
+		//test.pass("Entered text in search box");
+		//driver.findElement(By.xpath("(//input[@name='btnK'])[2]")).click();
+		//test.pass("Clicked the search button");
 		
+		//test.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
+		//test.addScreenCaptureFromPath("screenshot.png");
+		
+		MediaEntityModelProvider mediaModel = MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build();
+		test.pass("details", mediaModel);
+		
+		//System.out.println("Screenshot Placed in the Extent Report successfully");
+
+		//test.info("Test1 Completed");
+		//test.log(Status.INFO, "This step shows usage of log(status and Info");
+		//test.info("this shows the usage of info");
+		//System.out.println("test1 executed");
 	}
 	
 	@Test
 	public void test2() throws IOException
 	{
- 
-	    test = extent.createTest("Google Search Two", "Selenium"); 
+       
+	    test = extent.createTest("Selenium", "Search"); 
 		driver.get("https://www.google.com/");
 		test.pass("Navigated to google.com");
 		driver.findElement(By.xpath("//input[@title='Search']")).sendKeys("Selenium");
 		test.pass("Entered text in search box");
-		driver.findElement(By.xpath("(//input[@name='btnK'])[2]")).click();
+		//driver.findElement(By.xpath("(//input[@name='btnK'])[2]")).click();
+		//test.fail("The script failed");
 		test.fail("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
 		test.addScreenCaptureFromPath("screenshot.png");
+		//test.info("Test2 Completed");
+		//System.out.println("test2 executed");
 
 		//test.info("Test2 Completed");
 		//test.log(Status.INFO, "This step shows usage of log(status and Info");
@@ -101,19 +111,37 @@ public class ExtentReportsWithTestNG {
 		
 	}
 	
+	/*@AfterTest
+	public void tearDown(ITestResult result) throws IOException
+	{
+		
+		if(result.getStatus()==ITestResult.FAILURE)
+		{
+			String temp=rfObj.getScreenshot(driver);
+			
+			test.fail(result.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+		
+		extent.flush();
+		driver.close();
+		driver.quit();
+		test.pass("Closed the browser");
+		System.out.println("Execution for Test -  Completed");
+		
+	}*/
 	
 	@AfterTest
 	public void tearDownTest()
 	{
 		driver.close();
 		driver.quit();
-		test.pass("Closed the browser");
-		System.out.println("Execution for Tests are Completed");
+		System.out.println("Test Completed Successfully");
 	}
+	
 	@AfterSuite
-	public void tearDown()
-	{
+	public void tearDown() {
 		extent.flush();
+		
 	}
 }
 
