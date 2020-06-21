@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/java/features",
 		glue="stepDefinitions",tags="@MLTLogin",monochrome=true,strict=true,
-		plugin= {"pretty","html:target/cucumber","json:target/cucumber.json","junit:target/cukes.xml"})
+		plugin= {"pretty","html:target/cucumber","json:target/cucumber.json","junit:target/cukes.xml",})
 public class TestRunner { 
 	
 	

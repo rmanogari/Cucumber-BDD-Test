@@ -8,7 +8,7 @@ public class PageObjectO2{
 	public String userNametxtbx_xpath = "//input[@id='emailID-inputEl']";
 	public String pwdtxtbx_xpath="//input[@id='password-inputEl']";
 	public String loginbtn_xpath="//span[@id='loginButton-btnInnerEl']";
-	public String clntSlctnO2base_id ="button-1016-btnIconEl";
+	public String clntSlctnO2base_id ="button-1017-btnIconEl";
 	public String clntSlctnO2base_xpath ="//span[@id='button-1017-btnIconEl']";
 	public String clntSlctnPepsi_xpath="//span[@id='button-1019-btnIconEl']";
 	public String clienSlctntHIG_id="button-1017-btnIconEl";
@@ -123,6 +123,7 @@ public class PageObjectO2{
 	
 	
 	//**************************************************File Upload Objects*************************************************************
+	public String fileUpload_xpath="//span[@id='mltFileUploadButton-btnIconEl']";
 	public String fileUploadicon_id ="mltFileUploadButton-btnIconEl";
 	public String fileUploadbtn_xpath="//span[text()='File Upload']";
 	public String Headertxtfileupload_id="fileSelectPanel_header-title-textEl";

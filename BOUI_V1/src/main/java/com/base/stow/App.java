@@ -1,4 +1,4 @@
-package Practise.DemoProject;
+package com.base.stow;
 
 /**
  * Hello world!

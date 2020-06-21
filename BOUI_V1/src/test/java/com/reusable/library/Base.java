@@ -13,6 +13,8 @@ public class Base {
 	
 	public static WebDriver getDriver() throws IOException
 	{
+	
+		
 			String projectPath = System.getProperty("user.dir"); 
 			System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver.exe");
 			
@@ -24,3 +26,7 @@ public class Base {
 	}
 
 }
+
+
+
+

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,7 +22,7 @@ public class ReusableFunctions {
 	public Properties prop = new Properties();
 	public String projectPath = System.getProperty("user.dir");
 	public String configFilePath = projectPath+"/src/test/java/config/config.properties";
-
+	public WebDriver driver;
 	
 	
 	/*Method Name : highlightElement
@@ -142,5 +143,30 @@ public class ReusableFunctions {
 		
 		return path;
 	}
+	
+	public void TakeScreenShot(String fileName) throws IOException
+	{
+		SimpleDateFormat formatter= new SimpleDateFormat("ddMMyyyHHmmss");
+		Date date = new Date();
+		String screenshotNameFormat = fileName+ " " + formatter.format(date);
+		
+		String destScreenshotFile1 = System.getProperty("user.dir")+"\\reports\\Screenshots\\"+ screenshotNameFormat + ".png";
+		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(screenshot, new File(destScreenshotFile1));
+	}
+	
+	public String takeScreenShot(String aPath) {
+		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(screenshot, new File(aPath));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "";
+		}
+		return aPath;
+	}
+	
+	
+	
 
 	}
